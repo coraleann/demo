@@ -1,0 +1,92 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Регистрация — Водить.РФ{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-9 col-lg-8">
+    <div class="card fade-in"><div class="card-body p-4">
+      <h2 class="mb-1">Регистрация</h2>
+      <p class="text-muted small mb-4">Заполните все поля — после успешной валидации мы создадим ваш аккаунт.</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.username.label }}</label>
+          <div class="col-sm-8">
+            {{ form.username }}
+            {% if form.username.help_text %}<div class="form-text">{{ form.username.help_text }}</div>{% endif %}
+            {% if form.username.errors %}<div class="text-danger small mt-1">{{ form.username.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.password.label }}</label>
+          <div class="col-sm-8">
+            {{ form.password }}
+            {% if form.password.help_text %}<div class="form-text">{{ form.password.help_text }}</div>{% endif %}
+            {% if form.password.errors %}<div class="text-danger small mt-1">{{ form.password.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.password2.label }}</label>
+          <div class="col-sm-8">
+            {{ form.password2 }}
+            {% if form.password2.errors %}<div class="text-danger small mt-1">{{ form.password2.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.full_name.label }}</label>
+          <div class="col-sm-8">
+            {{ form.full_name }}
+            {% if form.full_name.errors %}<div class="text-danger small mt-1">{{ form.full_name.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.birth_date.label }}</label>
+          <div class="col-sm-8">
+            {{ form.birth_date }}
+            {% if form.birth_date.help_text %}<div class="form-text">{{ form.birth_date.help_text }}</div>{% endif %}
+            {% if form.birth_date.errors %}<div class="text-danger small mt-1">{{ form.birth_date.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.phone.label }}</label>
+          <div class="col-sm-8">
+            {{ form.phone }}
+            {% if form.phone.errors %}<div class="text-danger small mt-1">{{ form.phone.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-4 align-items-start">
+          <label class="col-sm-4 col-form-label fw-500">{{ form.email.label }}</label>
+          <div class="col-sm-8">
+            {{ form.email }}
+            {% if form.email.errors %}<div class="text-danger small mt-1">{{ form.email.errors|join:" " }}</div>{% endif %}
+          </div>
+        </div>
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-4">
+            <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+          </div>
+        </div>
+      </form>
+
+      <hr class="my-4">
+      <div class="text-center">
+        <a href="{% url 'login' %}" class="text-decoration-none">Уже есть аккаунт? Войти</a>
+      </div>
+    </div></div>
+  </div>
+</div>
+{% endblock %}

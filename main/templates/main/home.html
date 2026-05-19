@@ -1,0 +1,71 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'main/_slider.html' %}
+
+<section class="hero fade-in mt-3">
+  <span class="badge mb-3">Портал «Водить.РФ»</span>
+  <h1 class="mb-3">Обучение вождению<br>речного транспорта</h1>
+  <p class="lead mb-4">Катера · Яхты · Круизные лайнеры — очные курсы с опытными инструкторами</p>
+  <div class="hero-actions">
+    {% if user.is_authenticated %}
+      <a href="{% url 'apply' %}" class="btn btn-light btn-lg">Подать заявку</a>
+    {% else %}
+      <a href="{% url 'register' %}" class="btn btn-light btn-lg">Регистрация</a>
+      <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">Вход</a>
+    {% endif %}
+  </div>
+</section>
+
+<div class="row g-3 mt-3">
+  <div class="col-12 col-md-6 service-card fade-in">
+    <div class="card h-100">
+      <div class="card-body">
+        <img src="{% static 'img/logo.png' %}" alt="" class="card-icon">
+        <div>
+          <h3 class="mt-0">Катера</h3>
+          <p class="text-muted mb-0">Базовый курс вождения моторных катеров на реке.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 service-card fade-in">
+    <div class="card h-100">
+      <div class="card-body">
+        <img src="{% static 'img/boat-alt.png' %}" alt="" class="card-icon">
+        <div>
+          <h3 class="mt-0">Яхты</h3>
+          <p class="text-muted mb-0">Управление парусными и моторными яхтами.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 service-card fade-in">
+    <div class="card">
+      <div class="card-body">
+        <img src="{% static 'img/logo.png' %}" alt="" class="card-icon">
+        <div>
+          <h3 class="mt-0">Круизные лайнеры</h3>
+          <p class="text-muted mb-0">Большие суда для дальних речных маршрутов. Управление командой и навигация в сложных условиях.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-card mt-4 fade-in">
+  <div class="row align-items-center g-3">
+    <div class="col-md-8">
+      <h2 class="mb-2">Наше местонахождение</h2>
+      <p class="mb-1">Адрес головного офиса: <strong>г. Москва, ул. Большая Ордынка, д. 15</strong></p>
+      <p class="mb-1">Телефон горячей линии: <a href="tel:+74951234567"><strong>+7 (495) 123-45-67</strong></a></p>
+      <p class="mb-0" style="font-weight: 300;">Если возникли вопросы или пожелания, позвоните нам — ответим оперативно и подробно.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{% static 'img/boat-alt.png' %}" alt="" style="max-width: 120px; filter: brightness(0) invert(1);">
+    </div>
+  </div>
+</div>
+{% endblock %}
